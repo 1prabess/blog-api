@@ -1,41 +1,19 @@
 import express from "express";
+import {
+  createCategory,
+  getCategory,
+  deleteCategory,
+  updateCategory,
+} from "../../controllers/categories/categoriesController.js";
 
 const categoriesRouter = express.Router();
 
-categoriesRouter.post("/", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "category created" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+categoriesRouter.post("/", createCategory);
 
-categoriesRouter.get("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "category route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+categoriesRouter.get("/:id", getCategory);
 
-categoriesRouter.delete("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "delete category route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+categoriesRouter.delete("/:id", deleteCategory);
 
-categoriesRouter.put("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "update category route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+categoriesRouter.put("/:id", updateCategory);
 
 export default categoriesRouter;

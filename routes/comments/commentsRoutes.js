@@ -1,41 +1,19 @@
 import express from "express";
+import {
+  createComment,
+  getComment,
+  deleteComment,
+  updateComment,
+} from "../../controllers/comments/commentsController.js";
 
 const commentsRouter = express.Router();
 
-commentsRouter.post("/", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "comment created" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+commentsRouter.post("/", createComment);
 
-commentsRouter.get("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "comment route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+commentsRouter.get("/:id", getComment);
 
-commentsRouter.delete("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "delete comment route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+commentsRouter.delete("/:id", deleteComment);
 
-commentsRouter.put("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "update comment route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+commentsRouter.put("/:id", updateComment);
 
 export default commentsRouter;

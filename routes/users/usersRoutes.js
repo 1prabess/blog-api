@@ -1,59 +1,25 @@
 import express from "express";
+import {
+  registerUser,
+  loginUser,
+  getUsers,
+  getUserProfile,
+  deleteUser,
+  updateUser,
+} from "../../controllers/users/usersController.js";
 
 const usersRouter = express.Router();
 
-usersRouter.post("/register", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "user registered" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+usersRouter.post("/register", registerUser);
 
-usersRouter.post("/login", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "user logged in" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+usersRouter.post("/login", loginUser);
 
-usersRouter.get("/", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "users route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+usersRouter.get("/", getUsers);
 
-usersRouter.get("/profile/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "profile route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+usersRouter.get("/profile/:id", getUserProfile);
 
-usersRouter.delete("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "delete user route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+usersRouter.delete("/:id", deleteUser);
 
-usersRouter.put("/:id", async (req, res) => {
-  try {
-    res.json({ status: "success", data: "update user route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
-});
+usersRouter.put("/:id", updateUser);
 
 export default usersRouter;
