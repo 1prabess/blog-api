@@ -13,10 +13,7 @@ const app = express();
 // Middleware
 app.use(express.json()); // To parse JSON request bodies
 
-// -------
 // Routes
-// -------
-// users routes ----------------------------
 app.use("/api/v1/users/", usersRouter);
 app.use("/api/v1/posts/", postsRouter);
 app.use("/api/v1/comments/", commentsRouter);

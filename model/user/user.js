@@ -46,20 +46,26 @@ const userSchema = new Schema(
       enum: ["Admin", "Guest", "Editor"],
     },
 
-    viewedBy: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    viewedBy: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
 
-    followers: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    followers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
 
-    following: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    following: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
 
     isActive: {
       type: Boolean,
