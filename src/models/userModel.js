@@ -26,11 +26,6 @@ const userSchema = new Schema(
       required: [true, "Password is required"],
     },
 
-    postCount: {
-      type: Number,
-      default: 0,
-    },
-
     isBlocked: {
       type: Boolean,
       default: false,
@@ -46,7 +41,7 @@ const userSchema = new Schema(
       enum: ["Admin", "Guest", "Editor"],
     },
 
-    viewedBy: [
+    viewer: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
@@ -67,16 +62,35 @@ const userSchema = new Schema(
       },
     ],
 
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
 
-    posts: {
-      type: Schema.Types.ObjectId,
-      ref: "Post",
+    blocked: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
+
+    plan: [
+      {
+        type: String,
+        enum: ["Free", "Premium", "Pro"],
+        default: "Free",
+      },
+    ],
+
+    userAward: {
+      type: String,
+      enum: ["Bronze", "Silver", "Gold"],
+      default: "Bronze",
     },
   },
+
   { timestamps: true }
 );
 
