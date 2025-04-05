@@ -1,10 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
 import dbConnect from "./config/dbConnect.js";
-import usersRouter from "./routes/users/usersRoutes.js";
-import postsRouter from "./routes/posts/postsRoutes.js";
-import commentsRouter from "./routes/comments/commentsRoutes.js";
-import categoriesRouter from "./routes/categories/categoriesRoutes.js";
+import usersRouter from "./routes/usersRouter.js";
+import postsRouter from "./routes/postsRouter.js";
+import commentsRouter from "./routes/commentsRouter.js";
+import categoriesRouter from "./routes/categoriesRouter.js";
 
 dotenv.config();
 
@@ -18,12 +18,6 @@ app.use("/api/v1/users/", usersRouter);
 app.use("/api/v1/posts/", postsRouter);
 app.use("/api/v1/comments/", commentsRouter);
 app.use("/api/v1/categories/", categoriesRouter);
-
-// Error handling middleware (optional)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ status: "error", message: "Something went wrong!" });
-});
 
 // Start Server
 const PORT = process.env.PORT || 9000;
