@@ -5,13 +5,15 @@ import usersRouter from "./routes/usersRouter.js";
 import postsRouter from "./routes/postsRouter.js";
 import commentsRouter from "./routes/commentsRouter.js";
 import categoriesRouter from "./routes/categoriesRouter.js";
+import responseFormatter from "./middlewares/responseFormatter.js";
 
 dotenv.config();
 
 const app = express();
 
 // Middleware
-app.use(express.json()); // To parse JSON request bodies
+app.use(express.json());
+app.use(responseFormatter);
 
 // Routes
 app.use("/api/v1/users/", usersRouter);

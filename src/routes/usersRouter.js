@@ -1,22 +1,24 @@
 import express from "express";
 import {
-  registerUser,
-  loginUser,
+  // loginUser,
   getUsers,
   getUserProfile,
   deleteUser,
   updateUser,
+  handleRegisterUser,
+  handleLoginUser,
 } from "../controllers/usersController.js";
+import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 
 const usersRouter = express.Router();
 
-usersRouter.post("/register", registerUser);
+usersRouter.post("/register", handleRegisterUser);
 
-usersRouter.post("/login", loginUser);
+usersRouter.post("/login", handleLoginUser);
 
 usersRouter.get("/", getUsers);
 
-usersRouter.get("/profile/:id", getUserProfile);
+usersRouter.get("/profile", authenticatetokenMiddleware, getUserProfile);
 
 usersRouter.delete("/:id", deleteUser);
 
