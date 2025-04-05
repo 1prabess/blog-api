@@ -1,10 +1,7 @@
-export const createPost = async (req, res) => {
-  try {
-    res.json({ status: "success", data: "Post created" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+import createPostProvider from "../providers/posts/createPostProvider.js";
+
+export const handleCreatePost = async (req, res) => {
+  await createPostProvider(req, res);
 };
 
 export const getPost = async (req, res) => {
