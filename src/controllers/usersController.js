@@ -4,6 +4,9 @@ import getUserProfileProvider from "../providers/users/getUserProfileProvider.js
 import uploadProfilePhotoProvider from "../providers/users/uploadProfilePhotoProvider.js";
 import followUserProvider from "../providers/users/followUserProvider.js";
 import unfollowUserProvider from "../providers/users/unfollowUserProvider.js";
+import getUsersProvider from "../providers/users/getUsersProvider.js";
+import deleteProfileProvider from "../providers/users/deleteProfileProvider.js";
+import updateProfileProvider from "../providers/users/updateProfileProvider.js";
 
 export const handleRegisterUser = async (req, res) => {
   await registerUserProvider(req, res);
@@ -13,13 +16,8 @@ export const handleLoginUser = async (req, res) => {
   await loginUserProvider(req, res);
 };
 
-export const getUsers = async (req, res) => {
-  try {
-    res.json({ status: "success", data: "Users route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleGetUsers = async (req, res) => {
+  await getUsersProvider(req, res);
 };
 
 export const handleGetUserProfile = async (req, res) => {
@@ -38,20 +36,10 @@ export const handleUnfollowUser = async (req, res) => {
   await unfollowUserProvider(req, res);
 };
 
-export const deleteUser = async (req, res) => {
-  try {
-    res.json({ status: "success", data: `User ${req.params.id} deleted` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleDeleteProfile = async (req, res) => {
+  await deleteProfileProvider(req, res);
 };
 
-export const updateUser = async (req, res) => {
-  try {
-    res.json({ status: "success", data: `User ${req.params.id} updated` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleUpdateProfile = async (req, res) => {
+  await updateProfileProvider(req, res);
 };
