@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const postSchema = new Schema(
   {
@@ -8,18 +8,18 @@ const postSchema = new Schema(
       trim: true,
     },
 
-    description: {
+    content: {
       type: String,
-      required: [true, "Post description is required"],
+      required: [true, "Post content is required"],
     },
 
     category: {
       type: Schema.Types.ObjectId,
       ref: "Category",
-      required: [true, "Post category is required"],
+      // required: [true, "Post category is required"],
     },
 
-    numViews: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
     dislikes: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
@@ -31,7 +31,6 @@ const postSchema = new Schema(
 
     photo: {
       type: String,
-      required: [true, "Post image is required"],
     },
   },
   { timestamps: true }
