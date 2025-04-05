@@ -7,6 +7,8 @@ import {
   handleLoginUser,
   handleGetUserProfile,
   handleUploadProfilePhoto,
+  handleFollowUser,
+  handleUnfollowUser,
 } from "../controllers/usersController.js";
 import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 import multer from "multer";
@@ -18,6 +20,18 @@ const upload = multer({ storage });
 usersRouter.post("/register", handleRegisterUser);
 usersRouter.post("/login", handleLoginUser);
 usersRouter.get("/", getUsers);
+usersRouter.post(
+  "/following/:id/",
+  authenticatetokenMiddleware,
+  handleFollowUser
+);
+
+usersRouter.delete(
+  "/following/:id/",
+  authenticatetokenMiddleware,
+  handleUnfollowUser
+);
+
 usersRouter.get("/profile", authenticatetokenMiddleware, handleGetUserProfile);
 usersRouter.delete("/:id", deleteUser);
 usersRouter.put("/:id", updateUser);

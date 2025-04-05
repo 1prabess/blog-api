@@ -2,15 +2,8 @@ import { StatusCodes } from "http-status-codes";
 import User from "../../models/userModel.js";
 
 const uploadProfilePhotoProvider = async (req, res) => {
-  //   console.log(req.file);
-  //   return res.json({
-  //     message: "uploadd photro",
-  //   });
-
   try {
     const user = await User.findById(req.user.sub);
-
-    console.log(user);
 
     if (!user) {
       return res
