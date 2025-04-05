@@ -26,27 +26,27 @@ const userSchema = new Schema(
       required: [true, "Password is required"],
     },
 
-    isBlocked: {
-      type: Boolean,
-      default: false,
-    },
+    // isBlocked: {
+    //   type: Boolean,
+    //   default: false,
+    // },
 
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
+    // isAdmin: {
+    //   type: Boolean,
+    //   default: false,
+    // },
 
-    role: {
-      type: String,
-      enum: ["Admin", "Guest", "Editor"],
-    },
+    // role: {
+    //   type: String,
+    //   enum: ["Admin", "Guest", "Editor"],
+    // },
 
-    viewer: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    // viewer: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User",
+    //   },
+    // ],
 
     followers: [
       {
@@ -68,31 +68,35 @@ const userSchema = new Schema(
         ref: "Post",
       },
     ],
-
-    blocked: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Post",
-      },
-    ],
-
-    plan: [
-      {
-        type: String,
-        enum: ["Free", "Premium", "Pro"],
-        default: "Free",
-      },
-    ],
-
-    userAward: {
-      type: String,
-      enum: ["Bronze", "Silver", "Gold"],
-      default: "Bronze",
-    },
   },
 
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
+
+// Get fullname
+userSchema.virtual("fullname").get(function () {
+  return `${this.firstName} ${this.lastName}`;
+});
+
+// Get initials
+userSchema.virtual("initials").get(function () {
+  return `${this.firstName[0]}${this.lastName[0]}`;
+});
+
+// Get posts count
+userSchema.virtual("postCount").get(function () {
+  return this.posts.length;
+});
+
+// Get following count
+userSchema.virtual("followingCount").get(function () {
+  return this.following.length;
+});
+
+// Get followers count
+userSchema.virtual("followersCount").get(function () {
+  return this.followers.length;
+});
 
 const User = model("User", userSchema);
 
