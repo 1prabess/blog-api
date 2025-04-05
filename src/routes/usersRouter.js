@@ -1,14 +1,14 @@
 import express from "express";
 import {
-  getUsers,
-  deleteUser,
-  updateUser,
   handleRegisterUser,
   handleLoginUser,
   handleGetUserProfile,
   handleUploadProfilePhoto,
   handleFollowUser,
   handleUnfollowUser,
+  handleGetUsers,
+  handleDeleteProfile,
+  handleUpdateProfile,
 } from "../controllers/usersController.js";
 import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 import multer from "multer";
@@ -18,8 +18,11 @@ const usersRouter = express.Router();
 const upload = multer({ storage });
 
 usersRouter.post("/register", handleRegisterUser);
+
 usersRouter.post("/login", handleLoginUser);
-usersRouter.get("/", getUsers);
+
+usersRouter.get("/", handleGetUsers);
+
 usersRouter.post(
   "/following/:id/",
   authenticatetokenMiddleware,
@@ -33,8 +36,14 @@ usersRouter.delete(
 );
 
 usersRouter.get("/profile", authenticatetokenMiddleware, handleGetUserProfile);
-usersRouter.delete("/:id", deleteUser);
-usersRouter.put("/:id", updateUser);
+
+usersRouter.delete(
+  "/profile",
+  authenticatetokenMiddleware,
+  handleDeleteProfile
+);
+
+usersRouter.put("/profile", authenticatetokenMiddleware, handleUpdateProfile);
 
 usersRouter.post(
   "/profile-photo-upload",
