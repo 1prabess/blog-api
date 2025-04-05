@@ -1,15 +1,16 @@
 import express from "express";
 import {
-  createPost,
   getPost,
   getAllPosts,
   deletePost,
   updatePost,
+  handleCreatePost,
 } from "../controllers/postsController.js";
+import authenticateTokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 
 const postsRouter = express.Router();
 
-postsRouter.post("/", createPost);
+postsRouter.post("/", authenticateTokenMiddleware, handleCreatePost);
 
 postsRouter.get("/:id", getPost);
 
