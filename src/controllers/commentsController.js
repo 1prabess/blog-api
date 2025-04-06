@@ -1,24 +1,13 @@
-export const createComment = async (req, res) => {
-  try {
-    res.json({ status: "success", data: "Comment created" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+import createCommentProvider from "../providers/comments/createCommentProvider.js";
+import getAllCommentsProvider from "../providers/comments/getAllCommentsProvider.js";
+
+export const handleCreateComment = async (req, res) => {
+  createCommentProvider(req, res);
 };
 
-export const getComment = async (req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: `Comment details for ID: ${req.params.id}`,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleGetAllComments = async (req, res) => {
+  getAllCommentsProvider(req, res);
 };
-
 export const deleteComment = async (req, res) => {
   try {
     res.json({ status: "success", data: `Comment ${req.params.id} deleted` });
