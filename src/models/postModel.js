@@ -29,7 +29,7 @@ const postSchema = new Schema(
       required: [true, "Post author is required"],
     },
 
-    photo: {
+    thumbnail: {
       type: String,
     },
   },
