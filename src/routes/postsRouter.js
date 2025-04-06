@@ -4,8 +4,11 @@ import {
   updatePost,
   handleCreatePost,
   handleUploadThumbnailPhoto,
-  handleGetAllPosts,
   handleGetPost,
+  handleLikePost,
+  handleUnlikePost,
+  handleGetAllPostsOfProfile,
+  handleGetAllPosts,
 } from "../controllers/postsController.js";
 import authenticateTokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
@@ -19,13 +22,26 @@ const postsRouter = express.Router();
 postsRouter.post("/", authenticateTokenMiddleware, handleCreatePost);
 
 // Get your all posts
-postsRouter.get("/", authenticateTokenMiddleware, handleGetAllPosts);
+postsRouter.get("/", authenticateTokenMiddleware, handleGetAllPostsOfProfile);
 
 // Get all post of other user
-postsRouter.get("/user/:userId", handleGetAllPosts);
+postsRouter.get("/user/:userId", handleGetAllPostsOfProfile);
+
+// Get all posts for feed
+postsRouter.get("/feed", authenticateTokenMiddleware, handleGetAllPosts);
 
 // Get single post
 postsRouter.get("/post/:postId", handleGetPost);
+
+// Like a post
+postsRouter.post("/:postId/like", authenticateTokenMiddleware, handleLikePost);
+
+// Unlike a post
+postsRouter.post(
+  "/:postId/unlike",
+  authenticateTokenMiddleware,
+  handleUnlikePost
+);
 
 postsRouter.delete("/:id", deletePost);
 
