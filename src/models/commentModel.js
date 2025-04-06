@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const commentSchema = new Schema(
   {
@@ -9,13 +9,14 @@ const commentSchema = new Schema(
     },
 
     user: {
-      type: Object,
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: [true, "User is required"],
     },
 
-    description: {
+    content: {
       type: String,
-      required: [true, "Comment description is required"],
+      required: [true, "Comment content is required"],
     },
   },
   { timestamps: true }
