@@ -1,16 +1,21 @@
 import express from "express";
 import {
-  createComment,
-  getComment,
   deleteComment,
   updateComment,
+  handleCreateComment,
+  handleGetAllComments,
 } from "../controllers/commentsController.js";
+import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 
 const commentsRouter = express.Router();
 
-commentsRouter.post("/", createComment);
+commentsRouter.post(
+  "/:postId",
+  authenticatetokenMiddleware,
+  handleCreateComment
+);
 
-commentsRouter.get("/:id", getComment);
+commentsRouter.get("/:postId", handleGetAllComments);
 
 commentsRouter.delete("/:id", deleteComment);
 
