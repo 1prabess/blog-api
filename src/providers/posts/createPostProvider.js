@@ -3,7 +3,7 @@ import Post from "../../models/postModel.js";
 import User from "../../models/userModel.js";
 
 const createPostProvider = async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, category } = req.body;
   try {
     const user = await User.findById(req.user.sub);
 
@@ -17,6 +17,7 @@ const createPostProvider = async (req, res) => {
       title,
       content,
       user: user._id,
+      category,
     });
 
     user.posts.push(post._id);
