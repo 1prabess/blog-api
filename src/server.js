@@ -6,10 +6,13 @@ import postsRouter from "./routes/postsRouter.js";
 import commentsRouter from "./routes/commentsRouter.js";
 import categoriesRouter from "./routes/categoriesRouter.js";
 import responseFormatter from "./middlewares/responseFormatter.js";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors());
 
 // Middleware
 app.use(express.json());
