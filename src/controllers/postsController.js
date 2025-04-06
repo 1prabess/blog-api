@@ -1,28 +1,22 @@
 import createPostProvider from "../providers/posts/createPostProvider.js";
+import getAllPostsProvider from "../providers/posts/getAllPostsProvider.js";
+import getPostProvider from "../providers/posts/getPostProvider.js";
+import uploadThumbnailPhotoProvider from "../providers/posts/uploadThumbnailPhotoProvider.js";
 
 export const handleCreatePost = async (req, res) => {
   await createPostProvider(req, res);
 };
 
-export const getPost = async (req, res) => {
-  try {
-    res.json({
-      status: "success",
-      data: `Post details for ID: ${req.params.id}`,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleUploadThumbnailPhoto = async (req, res) => {
+  await uploadThumbnailPhotoProvider(req, res);
 };
 
-export const getAllPosts = async (req, res) => {
-  try {
-    res.json({ status: "success", data: "All posts route" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleGetPost = async (req, res) => {
+  await getPostProvider(req, res);
+};
+
+export const handleGetAllPosts = async (req, res) => {
+  await getAllPostsProvider(req, res);
 };
 
 export const deletePost = async (req, res) => {
