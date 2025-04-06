@@ -11,12 +11,6 @@ const uploadProfilePhotoProvider = async (req, res) => {
         .json({ message: "User not found" });
     }
 
-    if (user.isBlocked) {
-      return res
-        .status(StatusCodes.FORBIDDEN)
-        .json({ message: "Your account is blocked" });
-    }
-
     await User.findByIdAndUpdate(
       user._id,
       {
