@@ -1,9 +1,9 @@
 import express from "express";
 import {
-  deleteComment,
-  updateComment,
   handleCreateComment,
   handleGetAllComments,
+  handleDeleteComment,
+  handleUpdateComment,
 } from "../controllers/commentsController.js";
 import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 
@@ -17,8 +17,16 @@ commentsRouter.post(
 
 commentsRouter.get("/:postId", handleGetAllComments);
 
-commentsRouter.delete("/:id", deleteComment);
+commentsRouter.delete(
+  "/:commentId",
+  authenticatetokenMiddleware,
+  handleDeleteComment
+);
 
-commentsRouter.put("/:id", updateComment);
+commentsRouter.put(
+  "/:commentId",
+  authenticatetokenMiddleware,
+  handleUpdateComment
+);
 
 export default commentsRouter;
