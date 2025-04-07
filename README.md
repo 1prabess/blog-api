@@ -1,13 +1,13 @@
 
 
 
-# Blog API 
+# Blog API Documentation
 
 This README provides detailed information on the **RESTful API** designed for the **Blog Applications**. It includes available endpoints, request parameters, responses, and authentication requirements.
 
 ---
 
-## → Features
+## Features
 
 - **Users can register by providing their full name, email, and password.**
 - **Users can log in with their email and password to receive a JWT token for authentication.**
@@ -34,7 +34,7 @@ This README provides detailed information on the **RESTful API** designed for th
 
 ---
 
-## → Authentication
+## Authentication
 
 Some endpoints require authentication using a **Bearer Token** in the `Authorization` header.
 
@@ -53,7 +53,7 @@ Tokens can be obtained via the **Login** API.
 
 ---
 
-## → Response Structure
+## Response Structure
 
 All API responses follow a consistent format for both success and error scenarios.
 
@@ -85,7 +85,7 @@ All API responses follow a consistent format for both success and error scenario
 
 ---
 
-## → Users API
+## Users API
 
 ### 1. **Register a New User**
 
@@ -220,7 +220,7 @@ Allows the authenticated user to unfollow another user.
 
 ---
 
-## → Posts API
+## Posts API
 
 ### 1. **Create a New Post**
 
@@ -354,7 +354,7 @@ Uploads a thumbnail image for a post.
 
 ---
 
-## → Comments API
+## Comments API
 
 ### 1. **Create a Comment**
 
@@ -409,7 +409,7 @@ Deletes a user's own comment.
 
 ---
 
-## → File Uploads
+## File Uploads
 
 For uploading profile photos and post thumbnails, use the `multipart/form-data` format.
 
