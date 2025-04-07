@@ -1,5 +1,7 @@
 import createCommentProvider from "../providers/comments/createCommentProvider.js";
+import deleteCommentProvider from "../providers/comments/deleteCommentProvider.js";
 import getAllCommentsProvider from "../providers/comments/getAllCommentsProvider.js";
+import updateCommentProvider from "../providers/comments/updateCommentProvider.js";
 
 export const handleCreateComment = async (req, res) => {
   createCommentProvider(req, res);
@@ -8,20 +10,11 @@ export const handleCreateComment = async (req, res) => {
 export const handleGetAllComments = async (req, res) => {
   getAllCommentsProvider(req, res);
 };
-export const deleteComment = async (req, res) => {
-  try {
-    res.json({ status: "success", data: `Comment ${req.params.id} deleted` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+
+export const handleDeleteComment = async (req, res) => {
+  deleteCommentProvider(req, res);
 };
 
-export const updateComment = async (req, res) => {
-  try {
-    res.json({ status: "success", data: `Comment ${req.params.id} updated` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleUpdateComment = async (req, res) => {
+  updateCommentProvider(req, res);
 };

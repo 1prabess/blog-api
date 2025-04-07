@@ -1,9 +1,11 @@
 import createPostProvider from "../providers/posts/createPostProvider.js";
+import deletePostProvider from "../providers/posts/deletePostProvider.js";
 import getAllPostsOfProfileProvider from "../providers/posts/getAllPostsOfProfileProvider.js";
 import getAllPostsProvider from "../providers/posts/getAllPostsProvider.js";
 import getPostProvider from "../providers/posts/getPostProvider.js";
 import likePostProvider from "../providers/posts/likePostProvider.js";
 import unlikePostProvider from "../providers/posts/unlikePostProvider.js";
+import updatePostProvider from "../providers/posts/updatePostProvider.js";
 import uploadThumbnailPhotoProvider from "../providers/posts/uploadThumbnailPhotoProvider.js";
 
 export const handleCreatePost = async (req, res) => {
@@ -34,20 +36,10 @@ export const handleUnlikePost = async (req, res) => {
   await unlikePostProvider(req, res);
 };
 
-export const deletePost = async (req, res) => {
-  try {
-    res.json({ status: "success", data: `Post ${req.params.id} deleted` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleDeletePost = async (req, res) => {
+  await deletePostProvider(req, res);
 };
 
-export const updatePost = async (req, res) => {
-  try {
-    res.json({ status: "success", data: `Post ${req.params.id} updated` });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ status: "error", message: "Internal server error" });
-  }
+export const handleUpdatePost = async (req, res) => {
+  await updatePostProvider(req, res);
 };
