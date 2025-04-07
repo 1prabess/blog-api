@@ -4,7 +4,6 @@ import dbConnect from "./config/dbConnect.js";
 import usersRouter from "./routes/usersRouter.js";
 import postsRouter from "./routes/postsRouter.js";
 import commentsRouter from "./routes/commentsRouter.js";
-import categoriesRouter from "./routes/categoriesRouter.js";
 import responseFormatter from "./middlewares/responseFormatter.js";
 import cors from "cors";
 
@@ -22,7 +21,6 @@ app.use(responseFormatter);
 app.use("/api/v1/users/", usersRouter);
 app.use("/api/v1/posts/", postsRouter);
 app.use("/api/v1/comments/", commentsRouter);
-app.use("/api/v1/categories/", categoriesRouter);
 
 // Start Server
 const PORT = process.env.PORT || 9000;
