@@ -1,7 +1,5 @@
 import express from "express";
 import {
-  deletePost,
-  updatePost,
   handleCreatePost,
   handleUploadThumbnailPhoto,
   handleGetPost,
@@ -9,6 +7,8 @@ import {
   handleUnlikePost,
   handleGetAllPostsOfProfile,
   handleGetAllPosts,
+  handleDeletePost,
+  handleUpdatePost,
 } from "../controllers/postsController.js";
 import authenticateTokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
@@ -43,9 +43,9 @@ postsRouter.post(
   handleUnlikePost
 );
 
-postsRouter.delete("/:id", deletePost);
+postsRouter.delete("/:postId", authenticateTokenMiddleware, handleDeletePost);
 
-postsRouter.put("/:id", updatePost);
+postsRouter.put("/:postId", authenticateTokenMiddleware, handleUpdatePost);
 
 postsRouter.post(
   "/:postId/thumbnail",
