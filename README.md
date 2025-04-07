@@ -7,33 +7,6 @@ This README provides detailed information on the **RESTful API** designed for th
 
 ---
 
-## Features
-
-- **Users can register by providing their full name, email, and password.**
-- **Users can log in with their email and password to receive a JWT token for authentication.**
-- **Users can view and update their profile.**
-- **Users can permanently delete their account.**
-- **Users can upload a profile photo to personalize their account.**
-- **Users can follow other users.**
-- **Users can unfollow other users.**
-- **Users can view the profile information of other users by their ID.**
-- **Users can create blog posts.**
-- **Users can view all posts created by themselves or by other users.**
-- **Users can view information about any specific post, including comments and likes.**
-- **Users can update the content of their own posts.**
-- **Users can delete their own posts.**
-- **Users can like posts they find interesting.**
-- **Users can remove their like from a post.**
-- **Users can add comments to any post.**
-- **Users can view all comments on a specific post.**
-- **Users can edit their own comments.**
-- **Users can delete their own comments from posts.**
-- **Users can upload a profile photo to represent themselves on the platform.**
-- **Users can upload a thumbnail image for their posts to enhance their appearance.**
-- **All protected routes require a valid JWT token for secure access.**
-
----
-
 ## Authentication
 
 Some endpoints require authentication using a **Bearer Token** in the `Authorization` header.
