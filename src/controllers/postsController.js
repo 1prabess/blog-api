@@ -1,5 +1,6 @@
 import createPostProvider from "../providers/posts/createPostProvider.js";
 import deletePostProvider from "../providers/posts/deletePostProvider.js";
+import getAllPostsByCategoryProvider from "../providers/posts/getAllPostsByCategory.js";
 import getAllPostsOfProfileProvider from "../providers/posts/getAllPostsOfProfileProvider.js";
 import getAllPostsProvider from "../providers/posts/getAllPostsProvider.js";
 import getPostProvider from "../providers/posts/getPostProvider.js";
@@ -26,6 +27,10 @@ export const handleGetAllPostsOfProfile = async (req, res) => {
 
 export const handleGetAllPosts = async (req, res) => {
   await getAllPostsProvider(req, res);
+};
+
+export const handleGetAllPostsByCategory = async (req, res) => {
+  await getAllPostsByCategoryProvider(req, res);
 };
 
 export const handleLikePost = async (req, res) => {

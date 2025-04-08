@@ -9,6 +9,7 @@ import {
   handleGetAllPosts,
   handleDeletePost,
   handleUpdatePost,
+  handleGetAllPostsByCategory,
 } from "../controllers/postsController.js";
 import authenticateTokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
 import authenticatetokenMiddleware from "../middlewares/authenticateTokenMiddleware.js";
@@ -29,6 +30,13 @@ postsRouter.get("/user/:userId", handleGetAllPostsOfProfile);
 
 // Get all posts for feed
 postsRouter.get("/feed", authenticateTokenMiddleware, handleGetAllPosts);
+
+// Get all posts for feed by category
+postsRouter.get(
+  "/feed/:category",
+  authenticateTokenMiddleware,
+  handleGetAllPostsByCategory
+);
 
 // Get single post
 postsRouter.get("/post/:postId", handleGetPost);
