@@ -70,7 +70,8 @@ Registers a new user in the system.
 
 | Field    | Type   | Required | Description             |
 |----------|--------|----------|-------------------------|
-| fullName | string | Yes      | Full name of the user   |
+| firstName | string | Yes      | First name of the user   |
+| lastName | string | Yes      | Last name of the user   |
 | email    | string | Yes      | User's email address    |
 | password | string | Yes      | Password                |
 
