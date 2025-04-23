@@ -3,9 +3,7 @@
 
 # Blog API Documentation
 
-This README provides detailed information on the **RESTful API** designed for the **Blog Applications**. It includes available endpoints, request parameters, responses, and authentication requirements.
 
----
 
 ## Authentication
 
